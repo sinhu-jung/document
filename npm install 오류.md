@@ -2,8 +2,14 @@
 npm ERR! Error: EPERM: operation not permitted, rename 이러한 오류가 뜨면서 설치가 제대로 안되는 경우가 있음 따라서 아래에 있는 코드처럼 캐시를 지워줘야함
 
 ### 1.clean cache with
- => npm cache clean --force
+```bash
+ $ npm cache clean --force
+```
 ### 2.install the latest version of npm globally as admin: 
- => npm install -g npm@latest --force
+```bash
+ $ npm install -g npm@latest --force
+```
 ### 3.clean cache with
- => npm cache clean --force
+```bash
+ $ npm cache clean --force
+```
