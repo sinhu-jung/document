@@ -14,6 +14,9 @@ str = str + "world"
 
 ![캡처](https://user-images.githubusercontent.com/67888402/143513881-d9321307-a4b9-44a4-981f-477c5ec6781a.PNG)
 
++ String의 장점은 String 클래스는 크기가 고정되어 있으므로 단순하게 읽는 조회 연산에서는 StringBuffer나 StringBuilder클래스보다 빠르게 읽을 수 있는 장점이 있음
++ StringBuffer나 StringBuilder을 생성할 경우 buffer의 크기를 초기에 설정해줘야하는데 이러한 동작으로 인해 String객체보다 생성 속도가 많이 느려지게 되고 StringBuffer나 StringBuilder에서 문자열 수정을 할 경우에도 마찬가지로 버퍼의 크기를 늘리고 줄이고 명칭을 변경해야하는 내부적인 연산이 필요하므로 많은 양의 문자열 수정이 아니라면 String객체를 사용하는것이 오히려 나을 수 있음
+
 #### StringBuffer/StringBuilder
 
 + String 과는 반대로 StringBuffer/StringBuilder 는 가변성 가지기 때문에 .append() .delete() 등의 API를 이용하여 **동일 객체내에서 문자열을 변경**하는 것이 가능하며 **문자열의 추가,수정,삭제가 빈번하게 발생할 경우**라면 String 클래스가 아닌 **StringBuffer/StringBuilder를 사용** 해야함
