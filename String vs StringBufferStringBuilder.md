@@ -1,6 +1,7 @@
 ### String vs StringBuffer/StringBuilder
 
 + String과 StringBuffer/StringBuilder의 가장 큰 차이점은 String은 불변의 속성을 가짐
++ 즉 String 객체는 한번 생성되면 할당된 공간이 변하지 않지만 StringBuffer나 StringBuilder의 경우 객체의 공간이 부족해지는 경우 버퍼의 크기를 유연하게 늘려줌
 
 #### String
 
