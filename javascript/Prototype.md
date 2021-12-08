@@ -119,4 +119,4 @@ var obj = new Object();
 + 이런 프로토타입 체인 구조 때문에 모든 객체는 Object의 자식이라고 불리고, Object Prototype Object에 있는 모든 속성을 사용할 수 있습니다. 
 + 한 가지 예를 들면 toString함수가 있겠습니다.
 
-+ 하지만 ES6에서 다음과 같이 proto is deprecated in ES6. 되었기 때문에 Object.getPrototypeOf 와 Object.setPrototypeOf를 사용하시면 되겠습니다.
++  ES6에서 다음과 같이 proto is deprecated in ES6. 되었기 때문에 Object.getPrototypeOf 와 Object.setPrototypeOf를 사용하시면 되겠습니다.
