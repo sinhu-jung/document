@@ -1,0 +1,83 @@
+### SQL
+
+#### 과제 1
+
+```bash
+/*1) 해당 유저의 생년월일과 나이 */
+select birthday, (date_part('years', age(current_date , date(birthday))) + 1) as age from t_auth_user where auth_user_no = 53;
+
+/*2) 해당 유저가 살고있는 지역
+  단, 지역데이터는 t_code_value에 있으며 code_header_no = 4, code_detail_no = 31을 근거로 한다.*/
+select B.value, B.value2, B.value3, B.value4 
+	from t_auth_user as A Right join t_code_value as B   
+	on A.area_code = B.code_value_no 
+	where B.code_header_no = 4 and B.code_detail_no = 31 and A.area_code = 1072;
+
+/*3) 해당 유저의 가족 중 관계가 '형제'인 사람의 나이와 생년월일(실제 생년월일, 나이와 다를 수 있음(테스트 데이터)*/
+select C.birthday, C.age 
+	from t_auth_user as A 
+	left outer join t_auth_user_info as B on A.auth_user_no = B.auth_user_no 
+	left outer join t_auth_user_family as C on C.auth_user_info_no = B.auth_user_info_no 
+	where A.auth_user_no = 53 and C.relationship = '형제';
+
+/*4) 해당 유저의 가족 수*/
+select count(*) 
+	from t_auth_user as A 
+	left outer join t_auth_user_info as B on A.auth_user_no = B.auth_user_no 
+	left outer join t_auth_user_family as C on C.auth_user_info_no = B.auth_user_info_no 
+	where A.auth_user_no = 53;	
+
+/*5) 해당 유저의 가족중 가장 나이가 많은 사람의 나이*/
+select max(age)
+	from t_auth_user as A 
+	left outer join t_auth_user_info as B on A.auth_user_no = B.auth_user_no 
+	left outer join t_auth_user_family as C on C.auth_user_info_no = B.auth_user_info_no 
+	where A.auth_user_no = 53;	
+
+/*6) 해당 유저의 주민등록번호 (암호화 된 데이터 그대로 노출)*/
+select residentregistrationnumber 
+	from t_auth_user_info as A join t_auth_user as B 
+	on  A.auth_user_no = B.auth_user_no;
+	
+/*7) 해당 유저가 해운대로 전입한날짜*/
+select moveindate
+	from t_auth_user as A
+	left outer join t_auth_user_info as B on A.auth_user_no = B.auth_user_no 
+	left outer join t_auth_user_address taua on taua.auth_user_info_no = B.auth_user_info_no 
+	where A.auth_user_no = 53 and taua.address = '해운대';	
+```
+
+
+
+#### 과제2
+
+```bash
+select  tau.insert_timestamp, to_char(tau.insert_timestamp, 'YYYY-MM-DD') 
+	from t_auth_user tau
+	
+	
+select case when user_no > 1000000 then '최신가입자' else '이전가입자' end as user_gubun
+	from t_auth_user tau 
+	
+select *
+	from t_authority_header tah 
+	
+select *
+	from t_authority_detail tad 
+	
+select *
+	from t_menu tm 
+
+select *
+	from t_authority_member tam 
+	
+	
+
+select tah.authority_name, tm.menu_name 
+	from t_authority_header tah
+	left join t_authority_detail tad on tah.authority_no = tad.authority_no 
+	left join t_menu tm on tm.menu_no = tad.menu_no
+	where tah.authority_no = 59 and (case when tm.menu_name = '관리자도구' then 1
+										  when tm.menu_name = '활동기록' then 1
+										  when tm.menu_name = '권한관리' then 1
+										  else 0 end) = 1;
