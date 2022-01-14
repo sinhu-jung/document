@@ -1,0 +1,19 @@
+```javascript
+import React, { Fragment, useReducer } from 'react';
+
+
+export default function abbbar() {
+    const [ignore, forceUpdate] = useReducer(x => x + 1, 0);
+
+    function a(){
+      console.log("rerender");
+    }
+
+    return(
+      <Fragment>
+        {a()} 
+        <button onClick={forceUpdate}>button</button>
+      </Fragment>
+    );
+}
+```
