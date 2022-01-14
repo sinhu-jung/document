@@ -1,4 +1,4 @@
-```javascript
+```
 import React, { Fragment, useReducer } from 'react';
 
 
